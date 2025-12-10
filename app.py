@@ -28,27 +28,29 @@ COLORS = {
     'danger': '#dc3545',
 }
 
-# Custom CSS with Jawa Timur Theme
+# Custom CSS with Jawa Timur Theme - Improved Typography
 st.markdown(f"""
 <style>
     /* Import Google Font */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
     /* Global Styles */
-    .stApp {{
-        font-family: 'Inter', sans-serif;
+    html, body, .stApp {{
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
     }}
 
     /* Header Styling */
     .main-header {{
         background: linear-gradient(135deg, {COLORS['primary']} 0%, {COLORS['dark']} 100%);
-        padding: 1.5rem 2rem;
-        border-radius: 15px;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 4px 15px rgba(0, 104, 139, 0.3);
+        padding: 1.25rem 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 4px 12px rgba(0, 104, 139, 0.25);
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 16px;
     }}
 
     .header-logo {{
@@ -62,46 +64,47 @@ st.markdown(f"""
 
     .header-title {{
         color: {COLORS['white']};
-        font-size: 1.8rem;
+        font-size: 1.75rem;
         font-weight: 700;
         margin: 0;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        letter-spacing: -0.3px;
     }}
 
     .header-subtitle {{
         color: {COLORS['accent']};
-        font-size: 1rem;
-        margin: 5px 0 0 0;
+        font-size: 1.1rem;
+        margin: 6px 0 0 0;
         font-weight: 500;
     }}
 
     .header-org {{
         color: {COLORS['gold']};
-        font-size: 0.9rem;
-        margin: 3px 0 0 0;
+        font-size: 0.95rem;
+        margin: 4px 0 0 0;
         font-weight: 600;
+        letter-spacing: 0.5px;
     }}
 
     /* Metric Cards */
     .metric-container {{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
+        gap: 1.25rem;
         margin-bottom: 1.5rem;
     }}
 
     .metric-card {{
         background: linear-gradient(145deg, {COLORS['white']} 0%, {COLORS['light_bg']} 100%);
-        padding: 1.2rem;
+        padding: 1.5rem;
         border-radius: 12px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        border-left: 4px solid {COLORS['primary']};
+        box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        border-left: 5px solid {COLORS['primary']};
         transition: transform 0.2s, box-shadow 0.2s;
     }}
 
     .metric-card:hover {{
         transform: translateY(-3px);
-        box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
     }}
 
     .metric-card.green {{ border-left-color: {COLORS['secondary']}; }}
@@ -114,16 +117,17 @@ st.markdown(f"""
     }}
 
     .metric-value {{
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         font-weight: 700;
         color: {COLORS['dark']};
         margin: 0;
+        letter-spacing: -0.5px;
     }}
 
     .metric-label {{
-        font-size: 0.85rem;
-        color: #666;
-        margin: 0;
+        font-size: 1rem;
+        color: #555;
+        margin: 0.25rem 0 0 0;
         font-weight: 500;
     }}
 
@@ -131,11 +135,11 @@ st.markdown(f"""
     .section-header {{
         background: linear-gradient(90deg, {COLORS['primary']} 0%, {COLORS['accent']} 100%);
         color: white;
-        padding: 0.8rem 1.2rem;
+        padding: 0.875rem 1.25rem;
         border-radius: 8px;
         margin: 1.5rem 0 1rem 0;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -144,10 +148,10 @@ st.markdown(f"""
     /* Info Box */
     .info-box {{
         background: linear-gradient(135deg, {COLORS['light_bg']} 0%, #E6F3FF 100%);
-        border: 1px solid {COLORS['accent']};
+        border: 1px solid rgba(0, 181, 239, 0.3);
         border-radius: 10px;
         padding: 1rem 1.5rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -158,37 +162,42 @@ st.markdown(f"""
     .info-item {{
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
     }}
 
     .info-icon {{
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }}
 
     .info-label {{
-        color: #555;
-        font-size: 0.85rem;
+        color: #666;
+        font-size: 0.9rem;
+        font-weight: 500;
     }}
 
     .info-value {{
         color: {COLORS['primary']};
-        font-weight: 600;
-        font-size: 0.95rem;
+        font-weight: 700;
+        font-size: 1.1rem;
     }}
 
     /* Chart Container */
     .chart-container {{
         background: white;
         border-radius: 12px;
-        padding: 1rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        padding: 1.25rem;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.06);
         margin-bottom: 1rem;
     }}
 
     /* Table Styling */
-    .dataframe {{
-        border-radius: 8px;
-        overflow: hidden;
+    .stDataFrame {{
+        font-size: 0.95rem;
+    }}
+
+    .stDataFrame td, .stDataFrame th {{
+        padding: 0.75rem 1rem !important;
+        font-size: 0.95rem !important;
     }}
 
     /* Footer */
@@ -196,24 +205,24 @@ st.markdown(f"""
         background: linear-gradient(135deg, {COLORS['dark']} 0%, {COLORS['primary']} 100%);
         color: white;
         text-align: center;
-        padding: 1.5rem;
+        padding: 1.75rem;
         border-radius: 12px;
         margin-top: 2rem;
     }}
 
     .footer p {{
-        margin: 0.3rem 0;
+        margin: 0.35rem 0;
     }}
 
     .footer-title {{
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 1.15rem;
         color: {COLORS['gold']};
     }}
 
     .footer-subtitle {{
-        font-size: 0.85rem;
-        color: #aaa;
+        font-size: 0.95rem;
+        color: #ccc;
     }}
 
     /* Sidebar Styling */
@@ -225,6 +234,16 @@ st.markdown(f"""
     section[data-testid="stSidebar"] .stMultiSelect label {{
         color: {COLORS['primary']};
         font-weight: 600;
+        font-size: 1rem;
+    }}
+
+    section[data-testid="stSidebar"] .stMarkdown p {{
+        font-size: 1rem;
+    }}
+
+    section[data-testid="stSidebar"] h3 {{
+        font-size: 1.25rem !important;
+        margin-bottom: 0.75rem;
     }}
 
     /* Hide Streamlit Branding */
@@ -233,19 +252,36 @@ st.markdown(f"""
 
     /* Custom Tabs */
     .stTabs [data-baseweb="tab-list"] {{
-        gap: 8px;
+        gap: 6px;
     }}
 
     .stTabs [data-baseweb="tab"] {{
         background: {COLORS['light_bg']};
         border-radius: 8px 8px 0 0;
-        padding: 10px 20px;
-        font-weight: 500;
+        padding: 12px 24px;
+        font-weight: 600;
+        font-size: 1rem;
     }}
 
     .stTabs [aria-selected="true"] {{
         background: {COLORS['primary']};
         color: white;
+    }}
+
+    /* Plotly Chart Font Override */
+    .js-plotly-plot .plotly .gtitle {{
+        font-size: 16px !important;
+    }}
+
+    /* Download Button */
+    .stDownloadButton button {{
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }}
+
+    /* Caption */
+    .stCaption {{
+        font-size: 0.9rem;
     }}
 </style>
 """, unsafe_allow_html=True)
@@ -299,6 +335,9 @@ def process_data(kasdasts, bpp, opd_ref, rek):
     df = df.merge(rek[['KODE', 'NAMA_REK']], left_on='KODE_REK', right_on='KODE', how='left')
 
     df['NAMA_OPD'] = df['NAMA_OPD'].fillna('OPD Tidak Diketahui')
+
+    # Exclude Badan Pendapatan Daerah (BAPENDA) from the data
+    df = df[~df['NAMA_OPD'].str.contains('Badan Pendapatan Daerah', case=False, na=False)]
 
     df['TANGGAL'] = df['TGTERIMA'].dt.date
     df['TAHUN'] = df['TGTERIMA'].dt.year
@@ -497,10 +536,21 @@ def main():
     opd_summary.columns = ['OPD', 'Total Penerimaan', 'Jumlah STS']
     opd_summary = opd_summary.sort_values('Total Penerimaan', ascending=True).tail(15)
 
+    # Determine scale based on max value
+    max_value = opd_summary['Total Penerimaan'].max()
+    if max_value >= 1e9:  # Milyar
+        scale_factor = 1e9
+        scale_suffix = ' M'
+        scale_label = '(Rp dalam Milyar)'
+    else:  # Juta
+        scale_factor = 1e6
+        scale_suffix = ' Jt'
+        scale_label = '(Rp dalam Juta)'
+
     fig_opd = go.Figure()
     fig_opd.add_trace(go.Bar(
         y=opd_summary['OPD'],
-        x=opd_summary['Total Penerimaan'],
+        x=opd_summary['Total Penerimaan'] / scale_factor,
         orientation='h',
         marker=dict(
             color=opd_summary['Total Penerimaan'],
@@ -509,27 +559,32 @@ def main():
         ),
         text=opd_summary['Total Penerimaan'].apply(format_rupiah_short),
         textposition='outside',
-        textfont=dict(size=11, color='#333'),
+        textfont=dict(size=14, color='#333', family='Plus Jakarta Sans'),
         hovertemplate='<b>%{y}</b><br>Total: %{text}<br>Jumlah STS: %{customdata}<extra></extra>',
         customdata=opd_summary['Jumlah STS']
     ))
 
     fig_opd.update_layout(
-        height=450,
-        margin=dict(l=10, r=100, t=20, b=20),
+        height=500,
+        margin=dict(l=10, r=120, t=20, b=20),
         plot_bgcolor='white',
         paper_bgcolor='white',
         xaxis=dict(
-            title='Total Penerimaan (Rp)',
+            title=dict(text=f'Total Penerimaan {scale_label}', font=dict(size=14)),
             gridcolor='#eee',
             showline=True,
-            linecolor='#ddd'
+            linecolor='#ddd',
+            tickfont=dict(size=13),
+            tickformat='.0f',
+            ticksuffix=scale_suffix,
+            range=[0, (max_value / scale_factor) * 1.15]
         ),
         yaxis=dict(
             title='',
-            showgrid=False
+            showgrid=False,
+            tickfont=dict(size=13)
         ),
-        font=dict(family='Inter, sans-serif')
+        font=dict(family='Plus Jakarta Sans, sans-serif', size=14)
     )
     st.plotly_chart(fig_opd, use_container_width=True)
 
@@ -558,16 +613,17 @@ def main():
             marker=dict(colors=colors_pie[:len(payment_summary)], line=dict(color='white', width=2)),
             textinfo='percent+label',
             textposition='outside',
-            textfont=dict(size=12),
+            textfont=dict(size=14, family='Plus Jakarta Sans'),
             hovertemplate='<b>%{label}</b><br>Total: Rp %{value:,.0f}<br>Persentase: %{percent}<extra></extra>'
         )])
 
         fig_payment.update_layout(
-            height=350,
-            margin=dict(l=20, r=20, t=30, b=20),
+            height=380,
+            margin=dict(l=20, r=20, t=25, b=20),
             showlegend=False,
-            annotations=[dict(text=f'<b>{format_rupiah_short(total_all)}</b>', x=0.5, y=0.5, font_size=14, showarrow=False)],
-            paper_bgcolor='white'
+            annotations=[dict(text=f'<b>{format_rupiah_short(total_all)}</b>', x=0.5, y=0.5, font_size=16, showarrow=False)],
+            paper_bgcolor='white',
+            font=dict(family='Plus Jakarta Sans, sans-serif', size=14)
         )
         st.plotly_chart(fig_payment, use_container_width=True)
 
@@ -593,7 +649,7 @@ def main():
             y=daily_trend['Total Penerimaan'],
             mode='lines+markers',
             name='Total Penerimaan',
-            line=dict(color='#00688B', width=2.5),
+            line=dict(color='#00688B', width=3),
             marker=dict(size=6, color='#00688B'),
             fill='tozeroy',
             fillcolor='rgba(0, 104, 139, 0.1)',
@@ -601,24 +657,26 @@ def main():
         ))
 
         fig_trend.update_layout(
-            height=400,
-            margin=dict(l=10, r=10, t=20, b=10),
+            height=420,
+            margin=dict(l=15, r=15, t=20, b=15),
             plot_bgcolor='white',
             paper_bgcolor='white',
             xaxis=dict(
-                title='Tanggal',
+                title=dict(text='Tanggal', font=dict(size=14)),
                 gridcolor='#eee',
                 showline=True,
-                linecolor='#ddd'
+                linecolor='#ddd',
+                tickfont=dict(size=12)
             ),
             yaxis=dict(
-                title='Total Penerimaan (Rp)',
+                title=dict(text='Total Penerimaan (Rp)', font=dict(size=14)),
                 gridcolor='#eee',
                 showline=True,
-                linecolor='#ddd'
+                linecolor='#ddd',
+                tickfont=dict(size=12)
             ),
             hovermode='x unified',
-            font=dict(family='Inter, sans-serif')
+            font=dict(family='Plus Jakarta Sans, sans-serif', size=14)
         )
         st.plotly_chart(fig_trend, use_container_width=True)
 
@@ -635,11 +693,22 @@ def main():
     monthly_summary['Nama Bulan'] = monthly_summary['Bulan'].map(months_name)
     monthly_summary['Periode'] = monthly_summary['Nama Bulan'] + ' ' + monthly_summary['Tahun'].astype(str)
 
+    # Determine scale based on max value
+    max_value_monthly = monthly_summary['Total Penerimaan'].max()
+    if max_value_monthly >= 1e9:  # Milyar
+        scale_factor_monthly = 1e9
+        scale_suffix_monthly = ' M'
+        scale_label_monthly = '(Rp dalam Milyar)'
+    else:  # Juta
+        scale_factor_monthly = 1e6
+        scale_suffix_monthly = ' Jt'
+        scale_label_monthly = '(Rp dalam Juta)'
+
     fig_monthly = go.Figure()
 
     fig_monthly.add_trace(go.Bar(
         x=monthly_summary['Periode'],
-        y=monthly_summary['Total Penerimaan'],
+        y=monthly_summary['Total Penerimaan'] / scale_factor_monthly,
         marker=dict(
             color=monthly_summary['Total Penerimaan'],
             colorscale=[[0, '#00A550'], [0.5, '#00B5EF'], [1, '#00688B']],
@@ -647,26 +716,33 @@ def main():
         ),
         text=monthly_summary['Total Penerimaan'].apply(format_rupiah_short),
         textposition='outside',
-        textfont=dict(size=10),
+        textfont=dict(size=13, family='Plus Jakarta Sans'),
         hovertemplate='<b>%{x}</b><br>Total: %{text}<br>Jumlah STS: %{customdata}<extra></extra>',
         customdata=monthly_summary['Jumlah STS']
     ))
 
     fig_monthly.update_layout(
-        height=350,
-        margin=dict(l=10, r=10, t=20, b=10),
+        height=380,
+        margin=dict(l=15, r=15, t=60, b=15),
         plot_bgcolor='white',
         paper_bgcolor='white',
-        xaxis=dict(title='', gridcolor='#eee', tickangle=-45),
-        yaxis=dict(title='Total Penerimaan (Rp)', gridcolor='#eee'),
-        font=dict(family='Inter, sans-serif')
+        xaxis=dict(title='', gridcolor='#eee', tickangle=-45, tickfont=dict(size=13)),
+        yaxis=dict(
+            title=dict(text=f'Total Penerimaan {scale_label_monthly}', font=dict(size=14)),
+            gridcolor='#eee',
+            tickfont=dict(size=12),
+            tickformat='.0f',
+            ticksuffix=scale_suffix_monthly,
+            range=[0, (max_value_monthly / scale_factor_monthly) * 1.2]
+        ),
+        font=dict(family='Plus Jakarta Sans, sans-serif', size=14)
     )
     st.plotly_chart(fig_monthly, use_container_width=True)
 
     # Section 4: Detail Data
     st.markdown('<div class="section-header">📋 Detail Data</div>', unsafe_allow_html=True)
 
-    tab1, tab2, tab3 = st.tabs(["📊 Rekap per OPD", "📄 Daftar Transaksi STS", "👤 Rekap per Kasir"])
+    tab1, tab2, tab3 = st.tabs(["📊 Rekap per OPD", "📄 Daftar Transaksi STS", "👤 Rekap per Bendahara"])
 
     with tab1:
         opd_detail = df_filtered.groupby('NAMA_OPD').agg({
@@ -692,7 +768,7 @@ def main():
     with tab2:
         display_cols = ['KDBILL', 'TGTERIMA', 'NAMA_OPD', 'RPPOKOK', 'JENIS_PEMBAYARAN', 'NAMA_KASIR', 'KETUM']
         sts_display = df_filtered[display_cols].copy()
-        sts_display.columns = ['Kode Billing', 'Tanggal Terima', 'OPD', 'Nominal', 'Jenis Bayar', 'Kasir', 'Keterangan']
+        sts_display.columns = ['Kode Billing', 'Tanggal Terima', 'OPD', 'Nominal', 'Jenis Bayar', 'Bendahara', 'Keterangan']
         sts_display['Nominal'] = sts_display['Nominal'].apply(format_rupiah)
         sts_display = sts_display.sort_values('Tanggal Terima', ascending=False)
 
@@ -708,15 +784,15 @@ def main():
         )
 
     with tab3:
-        kasir_detail = df_filtered.groupby(['NAMA_KASIR', 'NIP_KASIR']).agg({
+        bendahara_detail = df_filtered.groupby(['NAMA_KASIR', 'NIP_KASIR']).agg({
             'RPPOKOK': ['sum', 'count'],
             'NAMA_OPD': lambda x: x.mode()[0] if len(x.mode()) > 0 else 'N/A'
         }).reset_index()
-        kasir_detail.columns = ['Nama Kasir', 'NIP', 'Total Penerimaan', 'Jumlah STS', 'OPD']
-        kasir_detail = kasir_detail.sort_values('Total Penerimaan', ascending=False)
-        kasir_detail['Total Penerimaan'] = kasir_detail['Total Penerimaan'].apply(format_rupiah)
+        bendahara_detail.columns = ['Nama Bendahara', 'NIP', 'Total Penerimaan', 'Jumlah STS', 'OPD']
+        bendahara_detail = bendahara_detail.sort_values('Total Penerimaan', ascending=False)
+        bendahara_detail['Total Penerimaan'] = bendahara_detail['Total Penerimaan'].apply(format_rupiah)
 
-        st.dataframe(kasir_detail.head(100), use_container_width=True, hide_index=True, height=400)
+        st.dataframe(bendahara_detail.head(100), use_container_width=True, hide_index=True, height=400)
 
     # Footer
     footer_html = f"""
