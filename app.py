@@ -642,11 +642,22 @@ def main():
         }).reset_index()
         daily_trend.columns = ['Tanggal', 'Total Penerimaan', 'Jumlah STS']
 
+        # Determine scale based on max value
+        max_value_daily = daily_trend['Total Penerimaan'].max()
+        if max_value_daily >= 1e9:  # Milyar
+            scale_factor_daily = 1e9
+            scale_suffix_daily = ' M'
+            scale_label_daily = '(Rp dalam Milyar)'
+        else:  # Juta
+            scale_factor_daily = 1e6
+            scale_suffix_daily = ' Jt'
+            scale_label_daily = '(Rp dalam Juta)'
+
         fig_trend = go.Figure()
 
         fig_trend.add_trace(go.Scatter(
             x=daily_trend['Tanggal'],
-            y=daily_trend['Total Penerimaan'],
+            y=daily_trend['Total Penerimaan'] / scale_factor_daily,
             mode='lines+markers',
             name='Total Penerimaan',
             line=dict(color='#00688B', width=3),
@@ -669,11 +680,14 @@ def main():
                 tickfont=dict(size=12)
             ),
             yaxis=dict(
-                title=dict(text='Total Penerimaan (Rp)', font=dict(size=14)),
+                title=dict(text=f'Total Penerimaan {scale_label_daily}', font=dict(size=14)),
                 gridcolor='#eee',
                 showline=True,
                 linecolor='#ddd',
-                tickfont=dict(size=12)
+                tickfont=dict(size=12),
+                tickformat='.0f',
+                ticksuffix=scale_suffix_daily,
+                range=[0, (max_value_daily / scale_factor_daily) * 1.1]
             ),
             hovermode='x unified',
             font=dict(family='Plus Jakarta Sans, sans-serif', size=14)
