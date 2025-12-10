@@ -14,6 +14,14 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Login credentials
+LOGIN_USERNAME = "bapendaptip"
+LOGIN_PASSWORD = "ptipbapenda2025"
+
+# Initialize session state
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in = False
+
 # Jawa Timur Government Color Theme
 COLORS = {
     'primary': '#00688B',      # Biru tua (profesional)
@@ -368,6 +376,100 @@ def format_rupiah_short(value):
     else:
         return f"Rp {value:,.0f}".replace(",", ".")
 
+def show_login_page():
+    """Display login page"""
+    # Custom CSS for login page
+    st.markdown(f"""
+    <style>
+        .login-container {{
+            max-width: 450px;
+            margin: 100px auto;
+            padding: 40px;
+            background: linear-gradient(145deg, {COLORS['white']} 0%, {COLORS['light_bg']} 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 104, 139, 0.15);
+            border-top: 5px solid {COLORS['primary']};
+        }}
+
+        .login-header {{
+            text-align: center;
+            margin-bottom: 30px;
+        }}
+
+        .login-logo {{
+            width: 100px;
+            margin-bottom: 20px;
+        }}
+
+        .login-title {{
+            color: {COLORS['primary']};
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }}
+
+        .login-subtitle {{
+            color: {COLORS['dark']};
+            font-size: 1rem;
+            font-weight: 500;
+        }}
+
+        .login-org {{
+            color: {COLORS['gold']};
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }}
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Login container
+    col1, col2, col3 = st.columns([1, 2, 1])
+
+    with col2:
+        # Logo and header
+        logo_path = os.path.join(ASSETS_DIR, "logo_jawa-timur.svg")
+        if os.path.exists(logo_path):
+            st.image(logo_path, width=120)
+
+        st.markdown(f"""
+        <div class="login-header">
+            <h1 class="login-title">🔐 Login Sistem</h1>
+            <p class="login-subtitle">Monitoring STS - Retribusi & PAD</p>
+            <p class="login-org">BAPENDA JAWA TIMUR</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("<br>", unsafe_allow_html=True)
+
+        # Login form
+        with st.form("login_form"):
+            username = st.text_input("👤 Username", placeholder="Masukkan username")
+            password = st.text_input("🔒 Password", type="password", placeholder="Masukkan password")
+
+            submit_button = st.form_submit_button("🚀 Masuk", use_container_width=True)
+
+            if submit_button:
+                if username == LOGIN_USERNAME and password == LOGIN_PASSWORD:
+                    st.session_state.logged_in = True
+                    st.success("✅ Login berhasil! Mengalihkan ke dashboard...")
+                    st.rerun()
+                else:
+                    st.error("❌ Username atau password salah!")
+
+        st.markdown("<br><br>", unsafe_allow_html=True)
+        st.markdown(f"""
+        <div style="text-align: center; color: #666; font-size: 0.85rem;">
+            <p>© {datetime.now().year} Badan Pendapatan Daerah Provinsi Jawa Timur</p>
+            <p>Pengembangan Teknologi Informasi Pendapatan (PTIP)</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+def logout():
+    """Logout function"""
+    st.session_state.logged_in = False
+    st.rerun()
+
 def main():
     # Load logo
     logo_path = os.path.join(ASSETS_DIR, "logo_jawa-timur.svg")
@@ -394,6 +496,12 @@ def main():
     # Sidebar with logo
     with st.sidebar:
         st.image(os.path.join(ASSETS_DIR, "bapendajatim_logo.png"), use_container_width=True)
+        st.markdown("---")
+
+        # Logout button
+        if st.button("🚪 Logout", use_container_width=True, type="primary"):
+            logout()
+
         st.markdown("---")
 
         st.markdown(f"### 🔍 Filter Data")
@@ -819,4 +927,8 @@ def main():
     st.markdown(footer_html, unsafe_allow_html=True)
 
 if __name__ == "__main__":
-    main()
+    # Check login status
+    if not st.session_state.logged_in:
+        show_login_page()
+    else:
+        main()
