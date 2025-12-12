@@ -1,5 +1,37 @@
-streamlit>=1.28.0
+# Dashboard Monitoring STS - BAPENDA Jawa Timur
+# Framework Requirements
+
+# Core Framework - Dash for Data Science UI
+dash>=2.14.0
+dash-bootstrap-components>=1.5.0
+flask>=3.0.0
+
+# Data Processing
 pandas>=2.0.0
-plotly>=5.18.0
-openpyxl>=3.1.0
 numpy>=1.24.0
+
+# Database ORM
+sqlalchemy>=2.0.0
+
+# Visualization
+plotly>=5.18.0
+
+# Excel Support
+openpyxl>=3.1.0
+
+# Security & Environment
+python-dotenv>=1.0.0
+
+# Production Server
+gunicorn>=21.0.0
+waitress>=2.1.0
+
+# Keep Streamlit for backward compatibility (optional)
+streamlit>=1.28.0
+
+# Optional: PostgreSQL support (uncomment for production)
+# psycopg2-binary>=2.9.0
+
+# Optional: Redis for caching (uncomment for production)
+# redis>=5.0.0
+# flask-caching>=2.1.0

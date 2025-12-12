@@ -1,0 +1,371 @@
+/*
+ * Custom CSS for Monitoring STS Dashboard
+ * BAPENDA Jawa Timur
+ * Dash + Bootstrap Theme
+ */
+
+/* ================= VARIABLES ================= */
+:root {
+    --primary: #00688B;
+    --primary-light: #0088B4;
+    --primary-dark: #004D66;
+    --secondary: #00A550;
+    --accent: #00B5EF;
+    --dark: #1a1a2e;
+    --gold: #D4AF37;
+    --white: #FFFFFF;
+    --light-bg: #F0F8FF;
+    --border: #dee2e6;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 15px rgba(0,0,0,0.12);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.15);
+    --transition: all 0.3s ease;
+}
+
+/* ================= GLOBAL STYLES ================= */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--light-bg);
+}
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar-col {
+    background: linear-gradient(180deg, var(--light-bg) 0%, var(--white) 100%);
+    border-right: 1px solid var(--border);
+    min-height: 100vh;
+}
+
+/* ================= CARDS ================= */
+.metric-card {
+    transition: var(--transition);
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ================= DROPDOWN STYLES ================= */
+.Select-control {
+    border-radius: 8px !important;
+    border-color: var(--border) !important;
+}
+
+.Select-control:hover {
+    border-color: var(--primary) !important;
+}
+
+.Select-value-label {
+    color: var(--text-primary) !important;
+}
+
+.VirtualizedSelectOption {
+    padding: 10px 12px !important;
+}
+
+.VirtualizedSelectFocusedOption {
+    background-color: var(--light-bg) !important;
+}
+
+/* ================= DATE PICKER ================= */
+.DateInput_input {
+    border-radius: 8px !important;
+    border: 1px solid var(--border) !important;
+    padding: 8px 12px !important;
+    font-size: 0.9rem !important;
+}
+
+.DateInput_input__focused {
+    border-color: var(--primary) !important;
+}
+
+.CalendarDay__selected {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.CalendarDay__selected:hover {
+    background: var(--primary-dark) !important;
+}
+
+.CalendarDay__hovered_span {
+    background: var(--light-bg) !important;
+    border-color: var(--accent) !important;
+}
+
+/* ================= BUTTONS ================= */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(0, 104, 139, 0.3);
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 104, 139, 0.4);
+}
+
+.btn-outline-primary {
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+}
+
+/* ================= TABS ================= */
+.nav-tabs {
+    border-bottom: 2px solid var(--light-bg);
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    transition: var(--transition);
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary);
+    border-bottom-color: var(--accent);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary);
+    background-color: transparent;
+    border-bottom-color: var(--primary);
+}
+
+/* ================= DATA TABLE ================= */
+.dash-table-container {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dash-spreadsheet-container .dash-spreadsheet-inner th {
+    background-color: var(--primary) !important;
+    color: white !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.dash-spreadsheet-container .dash-spreadsheet-inner td {
+    border-color: var(--border) !important;
+}
+
+.dash-spreadsheet-container .dash-spreadsheet-inner tr:nth-child(even) td {
+    background-color: var(--light-bg) !important;
+}
+
+.dash-spreadsheet-container .dash-spreadsheet-inner tr:hover td {
+    background-color: rgba(0, 181, 239, 0.1) !important;
+}
+
+/* ================= CHARTS ================= */
+.js-plotly-plot {
+    border-radius: 8px;
+}
+
+.modebar {
+    background: rgba(255,255,255,0.9) !important;
+    border-radius: 4px;
+}
+
+.modebar-btn path {
+    fill: var(--text-secondary) !important;
+}
+
+.modebar-btn:hover path {
+    fill: var(--primary) !important;
+}
+
+/* ================= LOADING ================= */
+._dash-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.dash-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--light-bg);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ================= ALERTS ================= */
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* ================= INPUTS ================= */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    transition: var(--transition);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 104, 139, 0.15);
+}
+
+/* ================= SWITCH ================= */
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    .sidebar-col {
+        position: relative !important;
+        height: auto !important;
+    }
+
+    .metric-card {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    html, body {
+        font-size: 14px;
+    }
+
+    .nav-tabs .nav-link {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ================= PRINT STYLES ================= */
+@media print {
+    .sidebar-col, .btn, .nav-tabs {
+        display: none !important;
+    }
+
+    .content-col {
+        width: 100% !important;
+    }
+
+    .metric-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* ================= UTILITY CLASSES ================= */
+.shadow-hover {
+    transition: var(--transition);
+}
+
+.shadow-hover:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-gold {
+    color: var(--gold) !important;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+}
+
+.border-left-primary {
+    border-left: 4px solid var(--primary);
+}
+
+.border-left-secondary {
+    border-left: 4px solid var(--secondary);
+}
+
+.border-left-gold {
+    border-left: 4px solid var(--gold);
+}
+
+.border-left-accent {
+    border-left: 4px solid var(--accent);
+}
