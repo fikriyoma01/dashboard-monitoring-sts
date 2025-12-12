@@ -888,11 +888,46 @@ def main():
         )
 
     with tab2:
-        display_cols = ['KDBILL', 'TGTERIMA', 'NAMA_OPD', 'RPPOKOK', 'JENIS_PEMBAYARAN', 'NAMA_KASIR', 'KETUM']
+        # Info box untuk menjelaskan perbedaan tanggal
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, #e3f2fd 0%, #fff3e0 100%); padding: 1.25rem; border-radius: 10px; margin-bottom: 1.25rem; border-left: 5px solid #00688B; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <p style="margin: 0; font-weight: 700; color: #00688B; font-size: 1rem;">📋 Keterangan Jenis Tanggal:</p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                <div style="background: #fff; padding: 1rem; border-radius: 8px; border-left: 4px solid #2196F3; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-weight: 700; color: #2196F3; font-size: 0.9rem;">📥 Tanggal Terima</p>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 0.85rem; color: #333; line-height: 1.5;">
+                        <strong>Dana diterima bendahara</strong><br>
+                        <span style="color: #666;">Tanggal saat dana dari wajib retribusi diterima oleh bendahara penerimaan.</span>
+                    </p>
+                </div>
+                <div style="background: #fff; padding: 1rem; border-radius: 8px; border-left: 4px solid #FF9800; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-weight: 700; color: #FF9800; font-size: 0.9rem;">💰 Tanggal Setor</p>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 0.85rem; color: #333; line-height: 1.5;">
+                        <strong>Dana disetor bendahara ke RKUD</strong><br>
+                        <span style="color: #666;">Tanggal saat bendahara menyetorkan dana ke Rekening Kas Umum Daerah (RKUD).</span>
+                    </p>
+                </div>
+                <div style="background: #fff; padding: 1rem; border-radius: 8px; border-left: 4px solid #4CAF50; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-weight: 700; color: #4CAF50; font-size: 0.9rem;">✅ Tanggal Validasi Bank</p>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 0.85rem; color: #333; line-height: 1.5;">
+                        <strong>Pengakuan dana masuk ke RKUD dari Bank Jatim</strong><br>
+                        <span style="color: #666;">Tanggal validasi/konfirmasi dari Bank Jatim bahwa dana sudah masuk ke RKUD.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        display_cols = ['KDBILL', 'TGTERIMA', 'TGSETOR', 'TGVALIDBANK', 'NAMA_OPD', 'RPPOKOK', 'JENIS_PEMBAYARAN', 'NAMA_KASIR', 'KETUM']
         sts_display = df_filtered[display_cols].copy()
-        sts_display.columns = ['Kode Billing', 'Tanggal Terima', 'OPD', 'Nominal', 'Jenis Bayar', 'Bendahara', 'Keterangan']
+        sts_display.columns = ['Kode Billing', '📥 Tgl Terima', '💰 Tgl Setor', '✅ Tgl Valid Bank', 'OPD', 'Nominal', 'Jenis Bayar', 'Bendahara', 'Keterangan']
+
+        # Format tanggal dengan lebih detail
+        for col in ['📥 Tgl Terima', '💰 Tgl Setor', '✅ Tgl Valid Bank']:
+            sts_display[col] = pd.to_datetime(sts_display[col]).dt.strftime('%d/%m/%Y')
+
         sts_display['Nominal'] = sts_display['Nominal'].apply(format_rupiah)
-        sts_display = sts_display.sort_values('Tanggal Terima', ascending=False)
+        sts_display = sts_display.sort_values('📥 Tgl Terima', ascending=False)
 
         st.dataframe(sts_display.head(500), use_container_width=True, hide_index=True, height=400)
         st.caption(f"Menampilkan 500 dari {len(sts_display):,} transaksi")
